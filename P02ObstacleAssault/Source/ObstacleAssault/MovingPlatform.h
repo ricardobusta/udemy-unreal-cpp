@@ -15,8 +15,8 @@ public:
 	// Sets default values for this actor's properties
 	AMovingPlatform();
 
-	UPROPERTY(EditAnywhere)
-	float Velocity = 10.0f;
+	UPROPERTY(EditAnywhere, Category="Moving Platform")
+	FVector Velocity = FVector(0,0,0);
 
 protected:
 	// Called when the game starts or when spawned
