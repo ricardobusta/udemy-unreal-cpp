@@ -16,13 +16,7 @@ public:
 	AMovingPlatform();
 
 	UPROPERTY(EditAnywhere)
-	int32 MyInt = 7;
-
-	UPROPERTY(EditAnywhere)
-	float MyFloat = 0.0f;
-
-	UPROPERTY(EditAnywhere)
-	bool MyBool = false;
+	float Velocity = 10.0f;
 
 protected:
 	// Called when the game starts or when spawned

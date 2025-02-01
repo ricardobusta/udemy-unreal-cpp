@@ -3,6 +3,8 @@
 
 #include "MovingPlatform.h"
 
+FVector position;
+
 // Sets default values
 AMovingPlatform::AMovingPlatform()
 {
@@ -14,11 +16,17 @@ AMovingPlatform::AMovingPlatform()
 void AMovingPlatform::BeginPlay()
 {
 	Super::BeginPlay();
+
+	position = GetActorLocation();
 }
 
 // Called every frame
-void AMovingPlatform::Tick(float DeltaTime)
+void AMovingPlatform::Tick(const float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	position.Z += Velocity * DeltaTime;
+	
+	SetActorLocation(position);
 }
 
