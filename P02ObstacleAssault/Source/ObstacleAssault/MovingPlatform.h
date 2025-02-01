@@ -10,13 +10,18 @@ UCLASS()
 class OBSTACLEASSAULT_API AMovingPlatform : public AActor
 {
 	GENERATED_BODY()
+
+public:
+	UPROPERTY(EditAnywhere, Category="Moving Platform")
+	FVector MoveVelocity = FVector(0,0,0);
+	UPROPERTY(EditAnywhere, Category="Moving Platform")
+	float MoveDistance = 100;
+private:
+	FVector StartingLocation;
 	
 public:	
 	// Sets default values for this actor's properties
 	AMovingPlatform();
-
-	UPROPERTY(EditAnywhere, Category="Moving Platform")
-	FVector Velocity = FVector(0,0,0);
 
 protected:
 	// Called when the game starts or when spawned
