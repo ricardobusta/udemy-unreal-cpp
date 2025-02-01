@@ -17,25 +17,28 @@ void AMovingPlatform::BeginPlay()
 	StartingLocation = GetActorLocation();
 }
 
-// Called every frame
-void AMovingPlatform::Tick(const float DeltaTime)
+void AMovingPlatform::MovePlatform(const float DeltaTime)
 {
-	Super::Tick(DeltaTime);
-
 	auto Position = GetActorLocation() + MoveVelocity * DeltaTime;
 
-	auto CurrentDistance = FVector::Dist(Position, StartingLocation);
-
-	if (CurrentDistance > MoveDistance)
+	if (const auto CurrentDistance = FVector::Dist(Position, StartingLocation); CurrentDistance > MoveDistance)
 	{
 		Position = StartingLocation + MoveVelocity.GetSafeNormal() * MoveDistance;
 		StartingLocation = Position;
 		MoveVelocity = -MoveVelocity;
 
-		auto string = GetName();
-		UE_LOG(LogTemp, Display, TEXT("Flip %s"), *string);
+		const auto String = GetName();
+		UE_LOG(LogTemp, Display, TEXT("Flip %s"), *String);
 	}
 	
 	SetActorLocation(Position);
+}
+
+// Called every frame
+void AMovingPlatform::Tick(const float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+	MovePlatform(DeltaTime);
 }
 
