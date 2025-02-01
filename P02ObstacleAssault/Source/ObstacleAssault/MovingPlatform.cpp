@@ -31,6 +31,9 @@ void AMovingPlatform::Tick(const float DeltaTime)
 		Position = StartingLocation + MoveVelocity.GetSafeNormal() * MoveDistance;
 		StartingLocation = Position;
 		MoveVelocity = -MoveVelocity;
+
+		auto string = GetName();
+		UE_LOG(LogTemp, Display, TEXT("Flip %s"), *string);
 	}
 	
 	SetActorLocation(Position);
