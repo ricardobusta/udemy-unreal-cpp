@@ -34,11 +34,17 @@ void AMovingPlatform::MovePlatform(const float DeltaTime)
 	SetActorLocation(Position);
 }
 
+void AMovingPlatform::RotatePlatform(float DeltaTime)
+{
+	AddActorLocalRotation(RotateVelocity * DeltaTime);
+}
+
 // Called every frame
 void AMovingPlatform::Tick(const float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
 	MovePlatform(DeltaTime);
+	RotatePlatform(DeltaTime);
 }
 
